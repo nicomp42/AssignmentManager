@@ -52,7 +52,7 @@ public class UnzipUtility {
             		tmp = new File(tmpString);
             		paths.add(tmp);
             	}
-            	// Create the paths in descending order so we get them all
+            	// Create the paths in descending order so we get them all. This is redundant as all the files in the .zip are processed, but oh well. 
             	for (int i = paths.size()-1; i >= 0; i--) {
                 	paths.get(i).mkdir();
             	}
