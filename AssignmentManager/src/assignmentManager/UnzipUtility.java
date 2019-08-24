@@ -1,3 +1,7 @@
+/*
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ */
 // Adapted from https://www.codejava.net/java-se/file-io/programmatically-extract-a-zip-file-using-java
 package assignmentManager;
 

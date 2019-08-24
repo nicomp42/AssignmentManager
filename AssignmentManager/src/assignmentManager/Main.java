@@ -1,3 +1,7 @@
+/*
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ */
 package assignmentManager;
  
 import java.io.File;
@@ -8,7 +12,8 @@ public class Main {
 		// Don't forget the trailing \\ on the path names!
 		AssignmentManager assignmentManager = new AssignmentManager("C:\\Temp\\Assignment08\\", "c:\\test\\foo\\");
 
-		assignmentManager.process();
+		int count = assignmentManager.process();
+		System.out.println(count + " assigments processed");
 	}
 
 }

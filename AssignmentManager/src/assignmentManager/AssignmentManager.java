@@ -1,3 +1,7 @@
+/*
+ * Bill Nicholson
+ * nicholdw@ucmail.uc.edu
+ */
 package assignmentManager;
 
 import java.io.File;
@@ -13,19 +17,24 @@ public class AssignmentManager {
 			assignmentFiles = new ArrayList<File>();
 		}
 		
-		public void process() {
-			listFilesForFolder(sourceFilePath);
-			unzipAllAssignments();
-			
+		public int process() {
+			int countOfAssignments = 0, countOfUnzippedAssignments = 0;
+			countOfAssignments = listFilesForFolder(sourceFilePath);
+			countOfUnzippedAssignments = unzipAllAssignments();
+			System.out.println("AssignmentManager.process(): " + countOfAssignments + " assignments were found. " + countOfUnzippedAssignments + " were unzipped.");
+			return countOfUnzippedAssignments;
 		}
-		private void unzipAllAssignments() {
+		private int unzipAllAssignments() {
+			int count = 0;
 			for (File assignmentFile : assignmentFiles) {
 				if (assignmentFile.getAbsolutePath().endsWith(".zip")) {
 					unzip(assignmentFile);
+					count++;
 				} else {
 					System.out.println("Assignment " + assignmentFile.getAbsolutePath() + " is not a .zip file");
 				}
 			}
+			return count;
 		}
 		private void unzip(File file) {
 			UnzipUtility unzipUtility = new UnzipUtility();
@@ -51,7 +60,7 @@ public class AssignmentManager {
             }
         }
 
-		public void listFilesForFolder(final File folder) {
+		public int listFilesForFolder(final File folder) {
 		    for (final File fileEntry : folder.listFiles()) {
 		        if (fileEntry.isFile()) {
 //		            System.out.println(fileEntry.getAbsolutePath());
@@ -61,5 +70,6 @@ public class AssignmentManager {
 //		            listFilesForFolder(fileEntry);
 		        }
 		    }
+		    return assignmentFiles.size();
 		}		
 }
